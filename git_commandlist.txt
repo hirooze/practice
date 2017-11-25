@@ -22,13 +22,13 @@ git push origin master
 # Others Command #
 ##################
 
-# リモートリポジトリの詳細を確認する
-git remote -v
-
 # リモートリポジトリを登録する
 git remote add <name> <url>
 
-# リモートリポジトリを削除する
+# 登録されているリモートリポジトリの詳細を確認する
+git remote -v
+
+# 登録されているリモートリポジトリを削除する
 git remote rm <name>
 
 # ブランチの一覧を表示する
