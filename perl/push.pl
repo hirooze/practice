@@ -12,7 +12,7 @@ $revfind[2]=22;
 $revfind[3]=54;
 my @showlog;
 
-for (my $i=1;$i < 4;++$i){
+for (my $i = 0 ; $i < 4 ; ++$i){
  chomp $revfind[$i];
  push @showlog, "$revfind[$i] ";
  say @showlog
