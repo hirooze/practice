@@ -10,3 +10,8 @@ while ($i <= 10){
  say $i;
  ++$i;
 }
+
+while (--$i) {
+ next unless $i % 2;
+ say "Fight!!!\$i == $i";
+}
