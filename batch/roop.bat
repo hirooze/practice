@@ -36,5 +36,5 @@ echo %string[5]%
 endlocal
 pause
 del filelist.txt
-echo CREAR THE filelist.txt
+echo CLEAR THE filelist.txt
 pause
