@@ -1,4 +1,4 @@
-# 表題
+# 備忘録#x　表題
 説明文
 ## 目次
 掲載内容は以下の通りです。
@@ -15,4 +15,7 @@
 $ git status
 ```
 ## 参考にしたページ
-[Markdown記法 サンプル集](https://qiita.com/tbpgr/items/989c6badefff69377da7)
+- [Markdown記法 サンプル集](https://qiita.com/tbpgr/items/989c6badefff69377da7)
+
+## Official Reference
+- [Markdown記法 サンプル集](https://qiita.com/tbpgr/items/989c6badefff69377da7)
