@@ -13,6 +13,5 @@ for /f "usebackq delims=" %%a in (`dir /b %path% *.csv`) do set importfile=%%a
 for /F "tokens=6 delims=:," %%a in (%importfile%) do (
  echo %%a >> tmp-datelist_%dt%.txt
 )
-findstr -v %mdir% tmp-datelist_%dt%.txt > datelist_%dt%.txt
 echo %date% %time% EXIT PROCESSING
 pause
