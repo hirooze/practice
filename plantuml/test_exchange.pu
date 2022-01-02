@@ -1,0 +1,16 @@
+@startuml
+start
+:Writing program by vbscript.
+checkking current directory.
+define set the current directory files.
+define set the current monthe values.;
+if (exist _1.txt file by current dirrectory?) then (yes)
+ :set _1.txt filename to array the tmplist[x];
+ repeat
+ :exchange tmplist[x] to tmpdate[x];
+ repeat while (tmplist[x] is not null?) is (yes) not (no)
+ else (no)
+:proccessing close;
+endif
+end
+@enduml
