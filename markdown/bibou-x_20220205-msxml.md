@@ -26,3 +26,4 @@ $ REG QUERY HKLM\SOFTWARE\Classes\ /f Msxml2.XMLHTTP
 
 ## Official Reference
 - [reg query/Microsoft Docs](https://docs.microsoft.com/ja-jp/windows-server/administration/windows-commands/reg-query)
+- [CLSID キー/Microsoft Docs](https://docs.microsoft.com/ja-jp/windows/win32/com/clsid-key-hklm)
