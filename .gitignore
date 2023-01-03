@@ -1,1 +1,8 @@
-/bin/
+/*/*.csv
+/*/*.txt
+/*/*.classpath
+/*/*.project
+.classpath
+.project
+.gitignore
+

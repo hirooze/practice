@@ -11,8 +11,10 @@ $output = Convert-Path .
 # 指定のフォルダに出力
 #$output = 
 
-## 情報取得対象フォルダ (<$output>を任意のパスに変更する。)
+## 情報取得対象フォルダ (<$output>を任意のフォルダパスに変更する。)
 $target = $output
+
+#出力ファイル名（指定した任意のフォルダ名を自動指定）
 $filename = (Get-Item $target).Name
 
 ## ログ取得開始

@@ -1,0 +1,22 @@
+/* ヘッダースペース */
+.header{
+	background:yellow;
+	
+}
+
+/* メインコンテンツスペース */
+main{
+	background-color:aqua;
+	
+}
+
+/* サブコンテンツスペース */
+.sub{
+	background-color: Lime;
+}
+
+/* フッタースペース */
+footer{
+	background-color:red;
+	
+}
