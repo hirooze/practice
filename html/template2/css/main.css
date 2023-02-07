@@ -3,17 +3,8 @@
 	background:yellow;
 	
 }
+/* 内容スペース（テーブルスペース）*/
 
-/* メインコンテンツスペース */
-main{
-	background-color:aqua;
-	
-}
-
-/* サブコンテンツスペース */
-.sub{
-	background-color: Lime;
-}
 
 /* フッタースペース */
 footer{
