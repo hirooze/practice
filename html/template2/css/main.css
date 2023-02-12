@@ -1,13 +1,7 @@
-/* ヘッダースペース */
-.header{
-	background:yellow;
-	
-}
-/* 内容スペース（テーブルスペース）*/
-
-
-/* フッタースペース */
-footer{
-	background-color:red;
-	
+.base > div{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 幅3等分 */
+    grid-template-rows: 100px 100px; /* 100pxの2行 */
+    grid-gap: 10px; /* 隙間10px */
+    margin-bottom: 20px;
 }
