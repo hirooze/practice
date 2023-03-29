@@ -1,0 +1,18 @@
+@startuml
+start
+:当日日付を取得;
+:フォルダ名を作成;
+if (フォルダが存在しない) then (yes)
+    :フォルダを作成;
+else (no)
+    :既存のフォルダを使用;
+endif
+:J2からJ11までの処理;
+while (J2-J11が存在する) is (true)
+    :J2の値を取得;
+    :A2の値でファイルを作成;
+    :ファイルにJ2の値を書き込む;
+endwhile
+:処理終了;
+stop
+@enduml
