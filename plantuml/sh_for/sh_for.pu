@@ -1,0 +1,13 @@
+@startuml
+
+start
+
+:変数iを0で初期化;
+while (i <= 10) is (true) do (yes)
+    :iを出力;
+    :iを1増やす;
+endwhile (no)
+
+stop
+
+@enduml
