@@ -1,8 +1,0 @@
-ファイルができたらコンパイルを行う
-javac example.java
-↓
-コンパイルされたファイルが作成される
-example.class
-
-コンパイルされたプログラムを実行する。※.class　は付けない
-java example
