@@ -1,8 +1,6 @@
 ﻿<# Windows Power Shell テンプレート #>
-
 ## 初期値設定
-$dt=date -f yyyyMMddHHmmss
-
+$dt=Get-date -f yyyyMMddHHmmss
 ## 保存場所
 # カレントディレクトリに出力
 $output = Convert-Path .
@@ -12,13 +10,12 @@ $output = Convert-Path .
 #$output = 
 
 ## ログ取得開始
-Start-TranScript -Path $output\log_$dt.log
+#Start-TranScript -Path $output\log_$dt.log
 
 # 処理内容
-
-echo $output
-echo $dt
+Write-Output $output
+Write-Output $dt
 
 ## ログ取得終了
-Stop-Transcript
+#Stop-Transcript
 pause
