@@ -2,10 +2,15 @@
 ## 保存場所
 # カレントディレクトリに出力
 $path           = Split-Path -Parent $MyInvocation.MyCommand.Path
+
+# コンフィグファイル名の指定
+$ConfigFile     = "setup.conf" 
+
 $impFolder      = $path + "\imp"
-$impconf        = $path + "\setup.conf"
+$impconf        = $path + "\" + $ConfigFile
 $outFolder      = $path
 $ImpRepPatterns = Import-Csv -Path $impconf -Encoding utf8
+
 # impフォルダ内のテキストファイルを取得
 $impFiles       = Get-ChildItem -Path $impFolder -Filter *.txt
 
@@ -34,5 +39,5 @@ foreach ($impFile in $impFiles) {
     $outputData | Out-File -FilePath $outputFilePath -Encoding utf8
 
     # 処理が完了したらメッセージを表示
-    Write-Host "File Replaced. $($impFile.Name)                          `t出力先: $($outputFilePath)"
+    Write-Host "File Replaced. $($impFile.Name)                   `t出力先: $($outputFilePath)"
 }
