@@ -10,7 +10,11 @@ $ git add -A
 ## ローカルリポジトリにコミットする
 ```bash
 $ git commit -m 'message'
+
+$ git commit -S -m 'message'
 ```
+※-Sで
+
 ## ブランチを切り替える
 ```bash
 $ git checkout <branchname>
