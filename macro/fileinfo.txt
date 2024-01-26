@@ -1,0 +1,12 @@
+Sub fileinfo()
+    Dim str1 As String, str2 As String, msg As String
+    str1 = ThisWorkbook.path & "\" & "*.*"
+    str2 = Dir(str1)
+    
+    Do While str2 <> ""
+        msg = msg & str2 & vbCrLf
+        str2 = Dir()
+    Loop
+    
+    MsgBox msg
+End Sub

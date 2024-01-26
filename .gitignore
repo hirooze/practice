@@ -1,8 +1,9 @@
-/*/*.csv
-/*/*.txt
-/*/*.classpath
-/*/*.project
+# Ignore specified folders
+.vscode/
+bin/
+out/
+
+# Ignore specified files
 .classpath
-.project
 .gitignore
-/out/*/*
+.project

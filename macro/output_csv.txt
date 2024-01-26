@@ -1,0 +1,15 @@
+Sub output_csv()
+Dim mypath, myname As String
+mypath = ThisWorkbook.path
+myname = "csvoutput_" & Format(Now, "yyyymmddhhmmss")
+
+Sheets("Sheet1").Select
+Sheets("Sheet1").Copy
+
+ActiveWorkbook.SaveAs Filename:=mypath & "/" & myname & ".csv", _
+FileFormat:=xlCSV, CreateBackup:=False
+ActiveWorkbook.Close False
+
+MsgBox "csv Export done."
+
+End Sub

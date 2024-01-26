@@ -1,0 +1,24 @@
+Private Sub CommandButton1_Click()
+    Dim fname, fpath, cname, ostr As String
+    
+    '選択リストの値を取得
+    cname = UserForm2.ComboBox1.Value
+    
+    'テキストボックスの値を取得
+    ostr = UserForm2.TextBox1.Value
+    
+    'ファイルパスを取得
+    fpath = ThisWorkbook.path
+    
+    'ファイル名を設定
+    fname = fpath &  & cname & _v & Format(Now, yyyymmddhhmmss) & .txt
+        
+    Open fname For Output As #1
+    
+    Print #1, ostr
+    
+    Close #1
+    
+    MsgBox Text Export done.
+    
+End Sub

@@ -1,0 +1,17 @@
+Sub output_xml()
+    Dim output, path, sheetname As String
+    Dim ws As Worksheet
+
+    Set ws = ActiveSheet
+    
+    sheetname = ws.Name
+    
+    path = ThisWorkbook.path
+    
+    output = path & "\" & "xmloutput_" & Format(Now, "yyyymmddhhmmss") & ".xml"
+    
+    Set ws = ThisWorkbook.Worksheets(sheetname)
+    ws.SaveAs output, xlXMLSpreadsheet
+
+    MsgBox "XML Export done."
+End Sub
