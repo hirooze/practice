@@ -1,0 +1,7 @@
+Sub messagebox()
+    'ファイル名確認　ThisWorkbook.Name
+    MsgBox "今実行しているブック名は　" & ThisWorkbook.Name
+    
+    MsgBox "今実行しているものは" & ThisWorkbook.path & "\" & ThisWorkbook.Name
+    
+End Sub
