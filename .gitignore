@@ -2,6 +2,7 @@
 .vscode/
 bin/
 out/
+.git/
 
 # Ignore specified files
 .classpath
