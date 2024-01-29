@@ -1,10 +1,10 @@
-﻿<# Windows PowerShell Program #>
+<# Windows PowerShell Program #>
 ## 保存場所
 # カレントディレクトリに出力
 $path           = Split-Path -Parent $MyInvocation.MyCommand.Path
 
 # コンフィグファイル名の指定
-$ConfigFile     = "setup.conf" 
+$ConfigFile     = "SetPattern.conf" 
 
 $impFolder      = $path + "\imp"
 $impconf        = $path + "\" + $ConfigFile
@@ -39,5 +39,5 @@ foreach ($impFile in $impFiles) {
     $outputData | Out-File -FilePath $outputFilePath -Encoding utf8
 
     # 処理が完了したらメッセージを表示
-    Write-Host "File Replaced. $($impFile.Name)                   `t出力先: $($outputFilePath)"
+    Write-Host "File Replaced. $($impFile.Name)                 `t出力先: $($outputFilePath)"
 }
