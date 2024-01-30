@@ -1,7 +1,6 @@
 ﻿<# Windows Power Shell GetFolderInfo #>
-
 ## 初期値設定
-$dt=date -f yyyyMMddHHmmss
+$dt=Get-date -f yyyyMMddHHmmss
 
 ## 保存場所
 # カレントディレクトリに出力
