@@ -1,22 +1,27 @@
 # Git コマンドリスト
-## コミットファイルの有無確認
+### コミットファイルの有無確認
 ```bash
-$ git status
+git status
 ```
-## ファイルをステージングする
+### ファイルをステージングする
 ```bash
-$ git add -A
+git add -A
 ```
-## ローカルリポジトリにコミットする
+### ファイルをステージングする(.gitignoreファイル更新後)
 ```bash
-$ git commit -m 'message'
-
-$ git commit -S -m 'message'
+git add .
 ```
 
-# 直近のコミットをまとめる(例は直近からから3つ)
+### ローカルリポジトリにコミットする
 ```bash
-$ git rebase -i HEAD~3
+git commit -m 'message'
+
+git commit -S -m 'message'
+```
+
+### 直近のコミットをまとめる(例は直近からから3つ)
+```bash
+git rebase -i HEAD~3
 ```
 viの編集画面が表示される。下記の内容を編集し、wqで保存する。
 [pick]の値を下記に変更する。
@@ -25,65 +30,70 @@ f	(fixup) ：選択したコミットが前のコミットと結合され、そ�
 
 ※-Sで暗号化付与
 
-## 直近のコミットを無効化する（変更をワーキングディレクトリに保持する。）
+### 直近のコミットを無効化する（変更をワーキングディレクトリに保持する。）
 ```bash
-$ git reset --soft HEAD^
+git reset --soft HEAD^
 ```
 
-## 直近のコミットを無効化する（変更をワーキングディレクトリに破棄する。）
+### 直近のコミットを無効化する（変更をワーキングディレクトリに破棄する。）
 ```bash
-$ git reset --hard HEAD^
+git reset --hard HEAD^
 ```
 ※ワーキングディレクトリを元に戻したい場合
 
-## ファイル、フォルダの追跡を除外する。
+### ファイル、フォルダの追跡されているか確認する
+```bash
+git ls-files ファイル名
+```
+
+### ファイル、フォルダの追跡を除外する。
 ```bash
 git rm --cached フォルダ名 -r
 ```
 
-## ブランチを切り替える
+### ブランチを切り替える
 ```bash
-$ git checkout <branchname>
-$ git checkout dev
-$ git checkout prep
+git checkout <branchname>
+git checkout dev
+git checkout prep
 ```
 
-## ブランチをマージする
+### ブランチをマージする
 ```bash
-$ git merge <branchname> 
-$ git merge dev
+git merge <branchname> 
+git merge dev
 ```
 
-## ローカルリポジトリをリモートリポジトリへpushする
+### ローカルリポジトリをリモートリポジトリへpushする
 ```bash
-$ git push
+git push
 ```
 
-# その他コマンド
-## 登録されているリモートリポジトリの詳細を確認する
+## その他コマンド
+### 登録されているリモートリポジトリの詳細を確認する
 ```bash
-$ git remote -v
+git remote -v
 ```
-## ブランチの一覧を表示する
+### ブランチの一覧を表示する
 ```bash
-$ git branch
+git branch
 ```
-## リモートリポジトリを登録する
+### リモートリポジトリを登録する
 ```bash
-$ git remote add <name> <url>
+git remote add <name> <url>
 ```
-## 登録されているリモートリポジトリを削除する
+### 登録されているリモートリポジトリを削除する
 ```bash
-$ git remote rm <name>
+git remote rm <name>
 ```
-## ブランチを作成する
+### ブランチを作成する
 ```bash
-$ git branch <branchname>
-$ git branch dev
-$ git checkout -b <branch> 
+git branch <branchname>
+git branch dev
+git checkout -b <branch> 
 ```
-## ブランチを削除する
+### ブランチを削除する
 ```bash
-$ git branch -d <branchname> 
-$ git branch -d dev
+git branch -d <branchname> 
+git branch -d dev
 ```
