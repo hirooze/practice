@@ -1,25 +1,26 @@
-﻿<# Windows Power Shell GetHostInfo #>
-$path           = Split-Path -Parent $MyInvocation.MyCommand.Path
-$dt             = Get-date -f yyyyMMddHHmmss
+﻿<# Windows Power Shell CollectClientPCInfo #>
+$path             = Split-Path -Parent $MyInvocation.MyCommand.Path
+$dt               = Get-date -f yyyyMMddHHmmss
 #=============#
 # 取得情報設定 #
 #=============#
-$HWInfo         = Get-WmiObject Win32_ComputerSystemProduct
-$computerSystem = Get-WmiObject Win32_ComputerSystem
-$serverName     = $computerSystem.Name
-$outputFile     = $path + "\" + $serverName + "_v" + $dt + ".txt"
-$BiosInfo       = Get-CimInstance -ClassName Win32_BIOS
-$OSInfo         = Get-WmiObject Win32_OperatingSystem
-$osInfo         = Get-CimInstance Win32_OperatingSystem
-$CPUInfo        = Get-WmiObject Win32_Processor
-$MEMInfo        = Get-WmiObject -Class Win32_OperatingSystem
-$DiskInfo       = Get-WmiObject -Class Win32_LogicalDisk
-$NWDevInfo      = Get-WmiObject -Class Win32_NetworkAdapter | Where-Object { $_.PhysicalAdapter -eq $true }
-$ipv4Addresses  = Get-NetIPAddress | Where-Object { $_.IPAddress -match '^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$' -and $_.AddressFamily -eq 'IPv4' }
-$updateList     = Get-HotFix
-$userList       = Get-LocalUser
-$domainInfo     = Get-WmiObject Win32_ComputerSystem
-$routeInfo      = Get-NetRoute | Where-Object { $_.AddressFamily -eq 'IPv4' }
+$HWInfo           = Get-WmiObject Win32_ComputerSystemProduct
+$computerSystem   = Get-WmiObject Win32_ComputerSystem
+$serverName       = $computerSystem.Name
+$outputFile       = $path + "\" + $serverName + "_v" + $dt + ".txt"
+$BiosInfo         = Get-CimInstance -ClassName Win32_BIOS
+$OSInfo           = Get-WmiObject Win32_OperatingSystem
+$osInfo           = Get-CimInstance Win32_OperatingSystem
+$CPUInfo          = Get-WmiObject Win32_Processor
+$MEMInfo          = Get-WmiObject -Class Win32_OperatingSystem
+$physicalDiskInfo = Get-PhysicalDisk
+$DiskInfo         = Get-WmiObject -Class Win32_LogicalDisk
+$NWDevInfo        = Get-WmiObject -Class Win32_NetworkAdapter | Where-Object { $_.PhysicalAdapter -eq $true }
+$ipv4Addresses    = Get-NetIPAddress | Where-Object { $_.IPAddress -match '^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$' -and $_.AddressFamily -eq 'IPv4' }
+$updateList       = Get-HotFix
+$userList         = Get-LocalUser
+$domainInfo       = Get-WmiObject Win32_ComputerSystem
+$routeInfo        = Get-NetRoute | Where-Object { $_.AddressFamily -eq 'IPv4' }
 #===================#
 # ログの出力開始設定 #
 #===================#
@@ -61,6 +62,13 @@ Write-Host "利用可能な仮想メモリ                `t: $($MEMInfo.FreeVir
 Write-Output "#==================#"
 Write-Output "# Disk Infomation #"
 Write-Output "#==================#"
+foreach ($disk in $physicalDiskInfo) {
+    Write-Host "デバイスID    `t: $($disk.DeviceId)"
+    Write-Host "メディアタイプ`t: $($disk.MediaType)"
+    Write-Host "モデル        `t: $($disk.Model)"
+    Write-Host "サイズ        `t: $($disk.Size / 1GB) GB"
+    Write-Host "-------------------------"
+}
 foreach ($disk in $DiskInfo) {
     Write-Host "デバイスID      `t: $($disk.DeviceID)"
     Write-Host "ボリューム名    `t: $($disk.VolumeName)"
