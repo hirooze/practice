@@ -1,10 +1,6 @@
 # Ignore specified folders
-.vscode/
-bin/
 out/
 .git/
 
 # Ignore specified files
-.classpath
 .gitignore
-.project
