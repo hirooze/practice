@@ -1,0 +1,33 @@
+Sub ExportSheetsToText()
+    Dim ws As Worksheet
+    Dim fileName As String
+    Dim fileNumber As Integer
+    
+    ' カレントディレクトリを取得
+    Dim currentDir As String
+    currentDir = ThisWorkbook.path
+    
+    ' すべてのシートを処理
+    For Each ws In Worksheets
+        ' アクティブシート以外のシートを対象にする
+        If ws.Name <> ActiveSheet.Name Then
+            ' シートごとにファイル名を生成
+            fileName = currentDir & "\" & ws.Name & ".txt"
+            
+            ' ファイルを開く
+            fileNumber = FreeFile
+            Open fileName For Output As fileNumber
+                        
+            ' セルの内容をファイルに書き込む（任意で変更可能）
+            For Each cell In ws.UsedRange
+                Print #fileNumber, cell.Value
+            Next cell
+            
+            ' ファイルを閉じる
+            Close fileNumber
+        End If
+    Next ws
+    
+    ' 処理が完了したらメッセージボックスを表示
+    MsgBox "Sheet Exported to text.", vbInformation
+End Sub
