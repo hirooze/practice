@@ -1,0 +1,13 @@
+username = 'username'          ; ログインするサーバーのユーザー名
+hostname = 'xxx.xxx.xxx.xxx'   ; ログインするサーバーのホスト名またはIPアドレス
+userpasswd = 'xxxxxxxxx'       ; ログインするサーバーのパスワード
+portnum = '22'
+
+msg = hostname
+strconcat msg ':portnum /ssh /auth=password /user='
+strconcat msg username
+strconcat msg ' /passwd='
+strconcat msg userpasswd     ; パスワード変数（userpasswd）を利用
+strconcat msg inputstr
+
+connect msg
