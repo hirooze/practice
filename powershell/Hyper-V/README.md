@@ -87,7 +87,7 @@ Restart-VM -Name "VM名" -Force
 ```bash
 Remove-VM -Name "VM名" -Force
 ```
-### VMの削除
+### ログ出力の停止
 ```bash
 Stop-Transcript
 ```
