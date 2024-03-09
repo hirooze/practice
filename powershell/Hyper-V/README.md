@@ -13,11 +13,20 @@ Start-TranScript -Path D:\<指定のフォルダ>\$(date -f yyyyMMdd-Hmmss).log
 ```
 ### 固定vHDの作成
 ```bash
-New-VHD -Path "D:\<指定のフォルダ>\<ファイル名>.vhdx" -SizeBytes 128GB -Fixed
+New-VHD -Path "D:\<指定のフォルダ>\<vhdxファイル名>.vhdx" -SizeBytes 128GB -Fixed
 ```
+### 可変vHDの作成
+```bash
+New-VHD -Path "D:\<指定のフォルダ>\<vhdxファイル名>.vhdx" -SizeBytes 128GB -Dynamic
+```
+### 差分vHDの作成
+```bash
+New-VHD -Path "D:\<指定のフォルダ>\<親vhdxファイル名>.vhdx"  -Path  "D:\<指定のフォルダ>\<vhdxファイル名>.vhdx" -Differencing
+```
+
 ### 既存vHDに紐づくVM新規作成(第一世代)
 ```bash
-New-VM -Name "ホスト名" -VHDPath "D:\<指定のフォルダ>\<vhd名>.vhdx" -MemoryStartupBytes 4096MB -SwitchName "Default Switch" -Generation 1
+New-VM -Name "ホスト名" -VHDPath "D:\<指定のフォルダ>\<vhdxファイル名>.vhdx" -MemoryStartupBytes 4096MB -SwitchName "Default Switch" -Generation 1
 ```
 起動メモリは4GBに設定、利用ネットワークは既存の"Default Switch"を利用する。  
 ### プロセッサ一覧を表示
