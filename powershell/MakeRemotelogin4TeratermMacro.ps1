@@ -1,6 +1,6 @@
 #検索したいホストのMACアドレス（DHCPの際に役立つ）
 $SearchMAC = "00-AA-BB-CC-DD-EE"
-$RemoteIP = arp -a | findstr $SearchMAC |%{$($_.split(' '))[2]}
+$RemoteIP = arp -a | findstr $SearchMAC | %{$($_.split(' '))[2]}
 $Path     = Split-Path -Parent $MyInvocation.MyCommand.Path 
 $FileName = $Path + "\" + "AutoRemotelogin_" + $RemoteIP + ".ttl"
 $ConnectionInfo = @(
@@ -12,8 +12,8 @@ $ConnectionInfo = @(
 )
 #新規ファイルの作成
 New-Item -Path $FileName -ItemType File
-$Username = "username = " + $ConnectionInfo[0].Id
-$Hostname = "hostname = " + $ConnectionInfo[0].To 
+$Username = "username = "   + $ConnectionInfo[0].Id
+$Hostname = "hostname = "   + $ConnectionInfo[0].To 
 $Password = "userpasswd = " + $ConnectionInfo[0].Pw
 Add-Content -Path $FileName -Value $Username 
 Add-Content -Path $FileName -Value $Hostname

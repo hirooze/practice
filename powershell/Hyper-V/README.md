@@ -7,10 +7,6 @@ Start-TranScript -Path D:\<指定のフォルダ>\$(date -f yyyyMMdd-Hmmss).log
 ```bash
 (Get-VM).vmid | Get-VHD | Select-Object VhdFormat,vhdtype,path,size | Format-Table -autosize
 ```
-### vHDタイプの表示
-```bash
-(Get-VM).vmid | Get-VHD | Select-Object VhdFormat,vhdtype,path,size | Format-Table -autosize
-```
 ### 固定vHDの作成
 ```bash
 New-VHD -Path "D:\<指定のフォルダ>\<vhdxファイル名>.vhdx" -SizeBytes 128GB -Fixed
@@ -21,9 +17,8 @@ New-VHD -Path "D:\<指定のフォルダ>\<vhdxファイル名>.vhdx" -SizeBytes
 ```
 ### 差分vHDの作成
 ```bash
-New-VHD -Path "D:\<指定のフォルダ>\<親vhdxファイル名>.vhdx"  -Path  "D:\<指定のフォルダ>\<vhdxファイル名>.vhdx" -Differencing
+New-VHD -Path "D:\<指定のフォルダ>\<親vhdxファイル名>.vhdx" -Path  "D:\<指定のフォルダ>\<vhdxファイル名>.vhdx" -Differencing
 ```
-
 ### 既存vHDに紐づくVM新規作成(第一世代)
 ```bash
 New-VM -Name "ホスト名" -VHDPath "D:\<指定のフォルダ>\<vhdxファイル名>.vhdx" -MemoryStartupBytes 4096MB -SwitchName "Default Switch" -Generation 1
@@ -65,6 +60,22 @@ Set-VMDvdDrive -VMName "VM名" -ControllerNumber 1 -ControllerLocation 0 -Path "
 ```bash
 Start-VM -Name "VM名"
 ```
+### チェックポイントの作成 
+```bash
+Checkpoint-VM -Name "VM名"
+```
+### チェックポイントの一覧
+```bash
+Get-VMSnapshot -VMName "VM名"
+```
+### Default SwitchのIPアドレスの確認
+```bash
+Get-NetIPAddress -InterfaceAlias "vEthernet (Default Switch)" -AddressFamily "IPv4"
+```
+### Default SwitchのIPアドレスの設定 (自動でIPアドレスが変わってしまった時)
+```bash
+New-NetIPAddress -IPAddress "192.168.48.1" -PrefixLength "24" -InterfaceAlias "vEthernet (Default Switch)"
+```
 # その他対応
 ### vHDのエラーチェック
 ```bash
@@ -72,31 +83,19 @@ Test-VHD -Path "D:\<指定のフォルダ>\<vhd名>.vhdx"
 ```
 True	：問題なし  
 False	：問題あり  
-### vHDの取り外し
-```bash
-Remove-VMHardDiskDrive -VMName "VM名" -ControllerType SCSI -ControllerNumber 0 -ControllerLocation 0
-```
 ### OSイメージのアンマウント
 ```bash
 Get-VM -Name "VM名" | Get-VMDvdDrive | Set-VMDvdDrive -Path $null
 ```
-### vHDの再接続
+### 追加ドライブの削除
 ```bash
-Add-VMHardDiskDrive -VMName "VM名" -Path "D:\<指定のフォルダ>\<vhd名>.vhdx" -ControllerType SCSI -ControllerNumber 0 -ControllerLocation 0
+Remove-VMDvdDrive -VMName "VM名" -ControllerNumber 0 -ControllerLocation 1
 ```
 ### VMの強制停止
 ```bash
 Stop-VM -Name "VM名" -Force
 ```
-### VMの強制再起動
-```bash
-Restart-VM -Name "VM名" -Force
-```
 ### VMの削除
 ```bash
 Remove-VM -Name "VM名" -Force
-```
-### ログ出力の停止
-```bash
-Stop-Transcript
 ```
