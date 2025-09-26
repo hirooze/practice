@@ -1,0 +1,15 @@
+# ベースイメージとして最新の Alpine Linux を使用
+FROM alpine:latest
+
+# メンテナ情報（任意）
+LABEL maintainer="yourname@example.com"
+
+# Git をインストール
+RUN apk update && \
+    apk add --no-cache git
+
+# デフォルトの作業ディレクトリ（任意）
+WORKDIR /app
+
+# コンテナ起動時のデフォルトコマンド（任意）
+CMD ["git", "--version"]

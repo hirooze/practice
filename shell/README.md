@@ -1,7 +1,11 @@
 # Bash Shell コマンドリスト
 ### ファイルの解凍
 ```bash
-tar -xzf <ファイル>.tar.gz
+tar -xzvf <ファイル>.tar.gz
+```
+### ファイルの圧縮
+```bash
+tar -czvf <ファイル名>.tar.gz <元ファイル>
 ```
 ### 容量の確認
 ```bash
