@@ -1,6 +1,6 @@
 # git の初期構築手順
-### git インストール
-|No.|コマンド説明|CentOS 7 コマンド|
+## git インストール
+|No.|説明|コマンド|
 |:---:|:---|:---|
 |1.|既存gitの有無を確認|`git --version`|
 |2.|既存のgitをアンインストール|`sudo yum remove -y git`|
@@ -14,8 +14,8 @@
 |10.|installを実行する|`sudo make prefix=/usr/local install`|
 |11.|gitのバージョンを確認する|`git --version`|
 # git の初期設定
-### git の初期設定
-|No.|コマンド説明|CentOS 7 コマンド|
+## git の初期設定
+|No.|説明|コマンド|
 |:---:|:---|:---|
 |1.|作業ユーザーの名前の設定|`git config --global user.name @username`|
 |2.|作業ユーザーのメールアドレスの設定|`git config --global user.email example@mail.com`|
