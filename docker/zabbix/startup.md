@@ -1,6 +1,5 @@
-# Docker-Zabbix 初期構築手順(Linux)
-### 
-|No.|コマンド説明|CentOS 7 コマンド|
+# Docker-Zabbix 初期構築手順(Linux) 
+|No.|説明|コマンド|
 |:---:|:---|:---|
 |1.|zabbixサーバーをpull|`docker pull zabbix/zabbix-server-mysql:latest`|
 |2.|zabbiz-httpサーバーをpull|`docker pull zabbix/zabbix-web-apache-mysql:latest`|

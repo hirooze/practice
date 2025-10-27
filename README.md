@@ -1,16 +1,41 @@
 # Git コマンドリスト
-### コミットファイルの有無確認
-```bash
-git status
-```
-### ファイルをステージングする
-```bash
-git add -A
-```
-### ファイルをステージングする(.gitignoreファイル更新後)
-```bash
-git add .
-```
+## 利用頻度の高いコマンド
+|説明|コマンド|
+|:---|:---|
+|ブランチの一覧を表示する|`git branch`|
+|ブランチを切り替える|`git checkout dev`|
+|コミットファイルの有無確認|`git status`|
+|ファイルをステージングに追加する(.gitignoreの内容に沿って実行)|`git add .`|
+|コミットする（暗号化）|`git commit -S -m 'message'`|
+|コミットする|`git commit -m 'message'`|
+|ブランチをマージする|`git merge <branchname>`|
+|ログを参照する|`git log`|
+|ローカルリポジトリをリモートリポジトリへpushする|`git push`|
+
+## 利用頻度中のコマンド
+|説明|コマンド|
+|:---|:---|
+|追跡されているファイルを確認する|`git ls-files -s`|
+|追跡しているファイルを除外する（.gitignoreに一致するファイルを削除）|`git rm --cached -r .`|
+|ステージングしたファイルを解除する|`git restore --staged .`|
+|削除したファイルをステージングする|`git add -u`|
+|直近のコミットを手動でまとめる(例は直近からから3つ)※|`git rebase -i HEAD~3`|
+|直近のコミットを自動でまとめる(例は直近からから3つ)※|`git rebase -i --autosquash HEAD~3`|
+|直近のコミットを無効化する（変更をワーキングディレクトリに保持する。）|`git reset --soft HEAD^`|
+|※直近のコミットを無効化する（変更をワーキングディレクトリに破棄する。）|`git reset --hard HEAD^`|
+|どのファイルがgitignoreにマッチしているか確認する|`git status --ignored`|
+
+## 初期利用コマンド
+|説明|コマンド|
+|:---|:---|
+|ブランチを作成する|`git branch <branchname>`|
+|ブランチを削除する|`git branch -d <branchname>`|
+|すべてのファイルをステージングに追加する|`git add -A`|
+|登録されているリモートリポジトリの詳細を確認する|`git remote -v`|
+|リモートリポジトリを登録する|`git remote add <name> <url>`|
+|登録されているリモートリポジトリを削除する|`git remote rm <name>`|
+
+## その他
 ### ファイルを追跡から除外する(ステージング上から削除する)
 ```bash
 git restore --staged ファイル名
@@ -19,14 +44,7 @@ git restore --staged ファイル名
 ```bash
 git restore ファイル名
 ```
-### ローカルリポジトリにコミットする
-```bash
-git commit -m 'message'
-
-git commit -S -m 'message'
-```
-*※-Sで暗号化付与*
-### 直近のコミットをまとめる(例は直近からから3つ)
+### ※直近のコミットをまとめる(例は直近からから3つ)
 ```bash
 git rebase -i HEAD~3
 ```
@@ -34,63 +52,8 @@ git rebase -i HEAD~3
 *[pick]の値を下記に変更する。*  
 *s 	(Squash)：複数のコミットを一つにまとめますが、まとめ先のコミットメッセージを編集が可能。（コミットメッセージの編集が可能）*  
 *f	(fixup) ：選択したコミットが前のコミットと結合され、そのコミットメッセージが無視される。（コミットメッセージの編集が不可）*  
-### 直近のコミットを無効化する（変更をワーキングディレクトリに保持する。）
-```bash
-git reset --soft HEAD^
-```
 ### 直近のコミットを無効化する（変更をワーキングディレクトリに破棄する。）
 ```bash
 git reset --hard HEAD^
 ```
-※ワーキングディレクトリを元に戻したい場合
-### ファイル、フォルダの追跡されているか確認する
-```bash
-git ls-files ファイル名
-```
-### ファイル、フォルダの追跡を除外する。
-```bash
-git rm --cached フォルダ名 -r
-```
-### ブランチを切り替える
-```bash
-git checkout <branchname>
-git checkout dev
-git checkout prep
-```
-### ブランチをマージする
-```bash
-git merge <branchname> 
-git merge dev
-```
-### ローカルリポジトリをリモートリポジトリへpushする
-```bash
-git push
-```
-## その他コマンド
-### 登録されているリモートリポジトリの詳細を確認する
-```bash
-git remote -v
-```
-### ブランチの一覧を表示する
-```bash
-git branch
-```
-### リモートリポジトリを登録する
-```bash
-git remote add <name> <url>
-```
-### 登録されているリモートリポジトリを削除する
-```bash
-git remote rm <name>
-```
-### ブランチを作成する
-```bash
-git branch <branchname>
-git branch dev
-git checkout -b <branch> 
-```
-### ブランチを削除する
-```bash
-git branch -d <branchname> 
-git branch -d dev
-```
+*※ワーキングディレクトリを元に戻したい場合*

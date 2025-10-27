@@ -1,53 +1,41 @@
-# conf.ini のパス
-$iniPath = ".\conf.ini"
+# ファイルパスの定義
+$tagFile = "Generate_Vagrant.conf"
+$configFile = "conf.ini"
+$outputFile = "Vagrantfile"
 
-# iniファイルの読み込み関数
-function Read-IniFile {
-    param([string]$path)
-    $ini = @{}
-    $section = ""
-    foreach ($line in Get-Content $path) {
-        $line = $line.Trim()
-        if ($line -match "^\[(.+)\]$") {
-            $section = $matches[1]
-            $ini[$section] = @{}
-        } elseif ($line -match "^(.+?)\s*=\s*'(.+)'$") {
-            $key, $value = $matches[1], $matches[2]
-            $ini[$section][$key] = $value
-        }
+# conf.ini の読み込みと解析
+$config = @{}
+Get-Content $configFile | ForEach-Object {
+    if ($_ -match '^\s*([^#;].*?):\s*(.+)$') {
+        $key = $matches[1].Trim()
+        $value = $matches[2].Trim()
+        $config[$key] = $value
     }
-    return $ini
 }
 
-# iniファイルを読み込む
-$config = Read-IniFile -path $iniPath
+# Generate_Vagrant.conf の tag.<value> を抽出
+$tags = @()
+Get-Content $tagFile | ForEach-Object {
+    if ($_ -match 'tag\.(\w+)') {
+        $tags += $matches[1]
+    }
+}
 
-# 各セクションの値を取得
-$box      = $config["vm"]["box"]
-$hostname = $config["vm"]["hostname"]
-$provider = $config["vm"]["provider"]
-
-$cpus = $config["System"]["cpus"]
-$mem  = $config["System"]["mem"]
-
-$netType = $config["Network"]["type"]
-$ip      = $config["Network"]["ip"]
-
-# Vagrantfile の内容を生成
-$vagrantfile = @"
+# Vagrantfile のテンプレート構築
+$vagrantContent = @"
 Vagrant.configure("2") do |config|
-  config.vm.box = "$box"
-  config.vm.hostname = "$hostname"
-  config.vm.network "$netType", ip: "$ip"
-  config.vm.provider "$provider" do |vb|
-    vb.memory = $mem
-    vb.cpus = $cpus
-  end
-end
 "@
 
-# Vagrantfile を出力
-$vagrantfile | Set-Content -Path ".\Vagrantfile" -Encoding UTF8
+foreach ($tag in $tags) {
+    if ($config.ContainsKey($tag)) {
+        $vagrantContent += "  config.vm.${tag} = `"$($config[$tag])`"`n"
+    } else {
+        Write-Warning "conf.ini に '$tag' の値が見つかりませんでした。"
+    }
+}
 
-Write-Host "✅ Vagrantfile を生成しました。次に実行するコマンド:"
-Write-Host "vagrant up"
+$vagrantContent += "end`n"
+
+# Vagrantfile の出力
+$vagrantContent | Set-Content -Encoding UTF8 -Path $outputFile
+Write-Host "Vagrantfile を生成しました: $outputFile"
