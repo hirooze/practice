@@ -1,4 +1,5 @@
-# vagrant の基本手順
+# vagrant の基本操作
+## vagrant の基本手順
 |No.|説明|コマンド|
 |:---:|:---|:---|
 |1.|templateフォルダをコピーしてリネームする|テンプレートのフォルダをコピーして、利用したいboxと関連する作業フォルダを作成する|
@@ -8,14 +9,34 @@
 |5.|仮想マシンの状態確認|`vagrant status`|
 |6.|仮想マシンにログイン|`vagrant ssh default`|
 
-# 時刻の設定 (chrony)
-## 1. chronyのインストール
+## vagrant libvirt 環境の構築
+|説明|コマンド|
+|:---|:---|
+|libvirtの依存関係のインストール|`sudo apt install -y libvirt-daemon-system libvirt-clients qemu-kvm libvirt-dev`|
+|vagrant-libvirtのインストール|`vagrant plugin install vagrant-libvirt`|
+|vagrantのプラグインの確認|`vagrant plugin list`|
+|ユーザーをvagrant/docker/kvmグループに追加|`sudo usermod -aG libvirt,kvm,docker $USER`|
+
+## postgresqlのインストール
+|No.|説明|コマンド|
+|:---:|:---|:---|
+|1.|アプリのインストール|`sudo dnf install -y postgresql-server postgresql-contrib`|
+|2.|初期化|`sudo /usr/bin/postgresql-setup --initdb`|
+|3.|サービス起動と有効化|`sudo systemctl enable --now postgresql`|``
+|4.|パスワードのランダム設定して設定|`PASS=$(openssl rand -base64 16) sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '$PASS';" echo "生成した postgres ロールのパスワード: $PASS"`|
+|5.|ログイン確認|`sudo -u postgres psql`|
+|6.|ログイン確認|`psql -h localhost -U postgres -W`|
+
+
+## 時刻の設定 (chrony)
+### 1. chronyのインストール
 |No.|説明|コマンド|
 |:---:|:---|:---|
 |1.|chronyのインストール|`sudo dnf install chrony`|
 |2.|chronyの自動起動有効化|`sudo systemctl enable --now chronyd`|
 |3.|chronyのデーモン起動確認|`sudo systemctl status chronyd`|
-## 2. chronyの設定変更
+
+### 2. chronyの設定変更
 設定ファイルを開く
 ```bash
 sudo vi /etc/chrony.conf
