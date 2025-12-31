@@ -21,6 +21,7 @@
 |仮想マシンの一時停止から復帰|`vagrant resume`|
 |仮想マシンの再起動|`vagrant reload`|
 |仮想マシンの削除(boxは消えない)|`vagrant destroy`|
+|sshでコマンドをリモート実行|`vagrant ssh -c "<コマンド>"`|
 
 ## boxの操作
 |コマンド説明|コマンド|
