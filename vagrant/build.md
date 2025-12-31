@@ -1,14 +1,60 @@
+<<<<<<< HEAD
 # vagrant の基本操作
 ## vagrant の基本手順
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+# vagrant の基本操作
+## 高頻度利用コマンド
+|No.|コマンド説明|コマンド|
+|:---:|:---|:---|
+|1.|ディレクトリ（新規プロジェクトフォルダ）を作成する|`mkdir <test>`|
+|2.|使いたいベースを指定し、Vagrantfileを作成する|`vagrant init generic/alpine318`|
+|3.|Vagrantfileを編集する|`-`|
+=======
+# vagrant の基本手順
+=======
+# vagrant の基本操作
+## vagrant の基本手順
+>>>>>>> dev
+>>>>>>> prep
 |No.|説明|コマンド|
 |:---:|:---|:---|
 |1.|templateフォルダをコピーしてリネームする|テンプレートのフォルダをコピーして、利用したいboxと関連する作業フォルダを作成する|
 |2.|リネームしたフォルダ内のconf.iniを編集する|vmの構成を考える。|
 |3.|Generate_Vagrantfile.ps1を実行し、vagrantfileを作成する|実行することで、vagrantfileを生成するプログラムを実行する。|
+>>>>>>> dev
 |4.|仮想マシンの起動|`vagrant up`|
 |5.|仮想マシンの状態確認|`vagrant status`|
 |6.|仮想マシンにログイン|`vagrant ssh default`|
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+## 仮想マシンの操作
+|コマンド説明|コマンド|
+|:---|:---|
+|仮想マシンの起動|`vagrant up`|
+|仮想マシンへの接続|`vagrant ssh default`|
+|仮想マシンのステータス確認|`vagrant status`|
+|仮想マシンのグローバルステータス確認|`vagrant global-status`|
+|仮想マシンの停止|`vagrant halt`|
+|仮想マシンの一時停止|`vagrant suspend`|
+|仮想マシンの一時停止から復帰|`vagrant resume`|
+|仮想マシンの再起動|`vagrant reload`|
+|仮想マシンの削除(boxは消えない)|`vagrant destroy`|
+
+## boxの操作
+|コマンド説明|コマンド|
+|:---|:---|
+|boxの一覧|`vagrant box list`|
+|boxの削除|`vagrant box remove <boxName>`|
+=======
+# 時刻の設定 (chrony)
+## 1. chronyのインストール
+=======
+>>>>>>> prep
 ## vagrant libvirt 環境の構築
 |説明|コマンド|
 |:---|:---|
@@ -30,6 +76,10 @@
 
 ## 時刻の設定 (chrony)
 ### 1. chronyのインストール
+<<<<<<< HEAD
+=======
+>>>>>>> dev
+>>>>>>> prep
 |No.|説明|コマンド|
 |:---:|:---|:---|
 |1.|chronyのインストール|`sudo dnf install chrony`|
@@ -89,3 +139,4 @@ server ntp.nict.jp iburst
         <td>date</td>
     </tr>
 </table>
+>>>>>>> dev
