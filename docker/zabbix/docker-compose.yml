@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  zabbix-mysql-server:
+    image: mysql:latest
+    container_name: zabbix-mysql-server
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: zabbix
+      MYSQL_USER: zabbix
+      MYSQL_PASSWORD: my_password
+      MYSQL_ROOT_PASSWORD: my_root_password
+    command: --character-set-server=utf8 --collation-server=utf8_bin
+    volumes:
+      - zabbix_mysql_data:/var/lib/mysql
+    networks:
+      - zabbix-network
+
+  zabbix-server:
+    image: zabbix/zabbix-server-mysql:latest
+    container_name: zabbix-server
+    restart: unless-stopped
+    ports:
+      - "10051:10051"
+    environment:
+      DB_SERVER_HOST: zabbix-mysql-server
+      MYSQL_DATABASE: zabbix
+      MYSQL_USER: zabbix
+      MYSQL_PASSWORD: my_password
+      MYSQL_ROOT_PASSWORD: my_root_password
+    depends_on:
+      - zabbix-mysql-server
+    networks:
+      - zabbix-network
+
+  zabbix-web:
+    image: zabbix/zabbix-web-apache-mysql:latest
+    container_name: zabbix-web
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      DB_SERVER_HOST: zabbix-mysql-server
+      MYSQL_DATABASE: zabbix
+      MYSQL_USER: zabbix
+      MYSQL_PASSWORD: my_password
+      MYSQL_ROOT_PASSWORD: my_root_password
+      ZBX_SERVER_HOST: zabbix-server
+      PHP_TZ: Asia/Tokyo
+    depends_on:
+      - zabbix-mysql-server
+      - zabbix-server
+    networks:
+      - zabbix-network
+
+  zabbix-agent:
+    image: zabbix/zabbix-agent:latest
+    container_name: zabbix-agent
+    restart: unless-stopped
+    privileged: true
+    volumes:
+      - /:/rootfs
+      - /var/run:/var/run
+      - /sys:/sys
+      - /dev:/dev
+    environment:
+      ZBX_HOSTNAME: zabbix-agent
+      ZBX_SERVER_HOST: zabbix-server
+    depends_on:
+      - zabbix-server
+    networks:
+      - zabbix-network
+
+volumes:
+  zabbix_mysql_data:
+    driver: local
+
+networks:
+  zabbix-network:
+    driver: bridge
