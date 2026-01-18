@@ -21,6 +21,8 @@
 |削除したファイルをステージングする|`git add -u`|
 |直近のコミットを手動でまとめる(例は直近からから3つ)※|`git rebase -i HEAD~3`|
 |直近のコミットを自動でまとめる(例は直近からから3つ)※|`git rebase -i --autosquash HEAD~3`|
+|直近のリベース（編集中）を続ける|`git rebase --continue`|
+|直近のリベース（編集中）を元に戻す|`git rebase --abort`|
 |直近のコミットを無効化する（変更をワーキングディレクトリに保持する。）|`git reset --soft HEAD^`|
 |※直近のコミットを無効化する（変更をワーキングディレクトリに破棄する。）|`git reset --hard HEAD^`|
 |どのファイルがgitignoreにマッチしているか確認する|`git status --ignored`|
