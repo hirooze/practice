@@ -20,6 +20,7 @@
 ## Docker-Composeのコマンド
 |説明|コマンド|
 |:---|:---|
+|Docker-Composeでコンテナを作成する|`docker-compose up -d`|
 |Docker-Compose Projectで作成した全削除|`docker compose down --rmi all`|
 
 ## まとめて実行

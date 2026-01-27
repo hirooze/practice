@@ -1,0 +1,50 @@
+[package]
+name = "msr"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies]
+clap = "4.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+regex = "1.0"
+
+[[bin]]
+name = "msr"
+path = "bin/msr.rs"
+
+[[bin]]
+name = "msr-main"
+path = "bin/main/main.rs"
+
+[[bin]]
+name = "msr-add"
+path = "bin/options/add/main.rs"
+
+[[bin]]
+name = "msr-del"
+path = "bin/options/del/main.rs"
+
+[[bin]]
+name = "msr-clear"
+path = "bin/options/clear/main.rs"
+
+[[bin]]
+name = "msr-list"
+path = "bin/options/list/main.rs"
+
+[[bin]]
+name = "msr-export"
+path = "bin/options/export/main.rs"
+
+[[bin]]
+name = "msr-import"
+path = "bin/options/imprt/main.rs"
+
+[[bin]]
+name = "msr-help"
+path = "bin/options/help/main.rs"
+
+[[bin]]
+name = "msr-version"
+path = "bin/options/version/main.rs"

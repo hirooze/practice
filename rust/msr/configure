@@ -1,0 +1,4 @@
+#!/bin/bash
+# 設定スクリプト
+echo "Configuring msr..."
+# 必要に応じて設定
