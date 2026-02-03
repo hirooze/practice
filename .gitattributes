@@ -1,0 +1,66 @@
+# すべてのテキストファイルを LF に統一
+* text=auto eol=lf
+
+# 明示的に LF を強制したいファイル
+*.rs text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+*.lock text eol=lf
+*.pu text eol=lf
+*.svg text eol=lf
+*.ps1 text eol=lf
+*.txt text eol=lf
+*.c text eol=lf
+*.cpp text eol=lf
+*.h text eol=lf
+*.hpp text eol=lf
+*.java text eol=lf
+*.py text eol=lf
+*.rb text eol=lf
+*.pl text eol=lf
+*.php text eol=lf
+*.sh text eol=lf
+*.bat text eol=lf
+*.vbs text eol=lf
+*.sql text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.xml text eol=lf
+*.html text eol=lf
+*.s text eol=lf
+*.cbl text eol=lf
+Makefile text eol=lf
+Dockerfile text eol=lf
+Vagrantfile text eol=lf
+
+# バイナリ扱い
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.exe binary
+*.dll binary
+*.zip binary
+*.tar binary
+*.gz binary
+
+# 言語固有の diff 設定
+*.c diff=cpp
+*.cpp diff=cpp
+*.h diff=cpp
+*.hpp diff=cpp
+*.java diff=java
+*.py diff=python
+*.rb diff=ruby
+*.rs diff=rust
+*.pl diff=perl
+*.php diff=php
+*.sh diff=bash
+*.ps1 diff=powershell
+*.sql diff=sql
+*.json diff=json
+*.xml diff=xml
+*.yml diff=yaml
+*.yaml diff=yaml
+*.md diff=markdown
