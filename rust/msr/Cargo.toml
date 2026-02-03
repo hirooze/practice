@@ -3,6 +3,10 @@ name = "msr"
 version = "1.0.0"
 edition = "2021"
 
+[lib]
+name = "msr"
+path = "src/lib.rs"
+
 [dependencies]
 clap = "4.0"
 serde = { version = "1.0", features = ["derive"] }

@@ -9,8 +9,8 @@
 ## よく使うコマンドの短縮コマンド
 |説明|コマンド|短縮コマンド|備考|
 |---|---|---|---|
-|ディレクトリの移動|`Set-Location`|`cd`|異なるドライブの移動も可|
-|ディレクトリ内のファイル一覧表示|`Get-Childitem`|`dir,ls`|よく使うオプション `-Filter`|
+|ディレクトリの移動|`Set-Location`|`cd`|異なるドライブの移動も可。|
+|ディレクトリ内のファイル一覧表示|`Get-Childitem`|`dir,ls`|よく使うオプション `-Filter -Recurse`|
 |ファイルの参照|`Get-Content`|`cat`|よく使うオプション `-Encoding UTF8`|
 |オブジェクトを選択|`Select-Object`|`select`||
 |選択するオブジェクトの条件を追加する|`Where-Object`|`where`||
@@ -27,11 +27,11 @@
 |---|---|---|
 |プロセスの一覧表示|`Get-Process`|`ps`|
 |プロセスの停止|`Stop-Process`|`kill`|
+|Webページのリクエスト確認|`Invoke-WebRequest`|`wget,curl`|
+|ポートの疎通確認|`Test-NetConnection`|`tnc`|
 |ローカルユーザー情報の取得|`Get-LocalUser`|`glu`|
 |ローカルグループ情報の取得|`Get-LocalGroup`|`glg`|
 |サービスの一覧表示|`Get-Service`|`gsv`|
-|Webページのリクエスト確認|`Invoke-WebRequest`|`wget,curl`|
-|ポートの疎通確認|`Test-NetConnection`|`tnc`|
 
 ## ステータス確認コマンド
 |説明|コマンド|

@@ -1,9 +1,18 @@
-.PHONY: all build clean
+.PHONY: all build clean configure install test
 
-all: build
+all: configure build
+
+configure:
+	./configure
 
 build:
 	cargo build --release
 
 clean:
 	cargo clean
+
+install: build
+	cargo install --path .
+
+test:
+	cargo test
