@@ -1,0 +1,35 @@
+#!/bin/bash
+# 設定スクリプト
+echo "Configuring msr..."
+
+# etc ディレクトリが存在しない場合作成
+if [ ! -d "etc" ]; then
+    mkdir -p etc
+    echo "Created etc directory."
+fi
+
+# patterns.conf が存在しない場合作成
+if [ ! -f "etc/patterns.conf" ]; then
+    touch etc/patterns.conf
+    echo "Created etc/patterns.conf."
+fi
+
+# lib ディレクトリが存在しない場合作成
+if [ ! -d "lib" ]; then
+    mkdir -p lib
+    echo "Created lib directory."
+fi
+
+# help.md と version.md が存在しない場合作成
+if [ ! -f "lib/help.md" ]; then
+    echo "# MSR Help" > lib/help.md
+    echo "This is the help file for MSR." >> lib/help.md
+    echo "Created lib/help.md."
+fi
+
+if [ ! -f "lib/version.md" ]; then
+    echo "1.0.0" > lib/version.md
+    echo "Created lib/version.md."
+fi
+
+echo "Configuration complete."

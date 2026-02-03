@@ -1,0 +1,72 @@
+@startuml msr
+package msr {
+  package etc {
+    [pattern.conf]
+    [msr.conf]
+  }
+  package lib {
+    [help.md]
+    [README.md]
+    [version.md]
+  }
+  package bin {
+    [msr.rs]
+    package main {
+      [main.rs]
+      package task {
+        [task_main.rs]
+      }
+    }
+    package options {
+      package add {
+        [main.rs]
+        package task {
+          [task_add.rs]
+        }
+      }
+      package del {
+        [main.rs]
+        package task {
+          [task_del.rs]
+        }
+      }
+      package clear {
+        [main.rs]
+        package task {
+          [task_clear.rs]
+        }
+      }
+      package list {
+        [main.rs]
+        package task {
+          [task_list.rs]
+        }
+      }
+      package export {
+        [main.rs]
+        package task {
+          [task_export.rs]
+        }
+      }
+      package import {
+        [main.rs]
+        package task {
+          [task_import.rs]
+        }
+      }
+      package help {
+        [main.rs]
+        package task {
+          [task_help.rs]
+        }
+      }
+      package version {
+        [main.rs]
+        package task {
+          [task_version.rs]
+        }
+      }
+    }
+  }
+}
+@enduml
